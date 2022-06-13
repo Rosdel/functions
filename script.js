@@ -95,6 +95,7 @@ const lufthansa = {
     console.log(
       `${name} booked  a flight on ${this.airline} and this is the code ${this.iataCode}${flightNum}`
     );
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}, name` });
   },
 };
 lufthansa.book(239, 'Rosdell Ouma');
@@ -104,3 +105,21 @@ const eurowing = {
   iataCode: 'EW',
   bookings: [],
 };
+const Bombardier = {
+  airline: 'Uganda',
+  iataCode: 'Ug',
+  bookings: [],
+};
+
+//---------- call method-------///
+const book = lufthansa.book;
+book.call(eurowing, 23, 'Sarah Williams');
+book.call(lufthansa, 44, 'Mary Cooper');
+book.call(Bombardier, 111, 'Rosdell Ouma');
+
+///-----does not work-----
+// book(23, 'Sarah Williams');
+// ///------------apply method--------///
+const flightData = [565, 'George Cooper'];
+
+book.call(Bombardier, ...flightData);
