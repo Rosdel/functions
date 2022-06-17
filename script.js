@@ -131,4 +131,16 @@ const Bombardier = {
 // const bookBrd = book.bind(Bombardier);
 // const booker = book.bind(eurowing);
 
+///////////////////-----CLOSURES FUNCTIONS------------///////////
 
+const securebooking = function () {
+  let passengerCount = 0;
+  return function () {
+    passengerCount += 1;
+    console.log(`${passengerCount} passengers`);
+  };
+};
+const booker = securebooking();
+booker();
+booker();
+booker();
